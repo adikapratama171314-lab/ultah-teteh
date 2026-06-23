@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght=700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+    background: url('https://cdn.phototourl.com/free/2026-06-23-c688747d-0e9b-4cd9-94a7-3d04e1461eb1.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.container {
+    width: 95%;
+    max-width: 420px;
+    position: relative;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.93);
+    padding: 30px 20px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    text-align: center;
+    display: none;
+    border: 4px solid #fff;
+}
+
+.card.active {
+    display: block;
+    animation: popMasuk 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popMasuk {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+    font-family: 'Fredoka One', cursive;
+    color: #ff6b81;
+    font-size: 26px;
+    margin-top: 0;
+    text-shadow: 2px 2px 0px #fecfef;
+}
+
+p {
+    color: #4b4b4b;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.bear-boss {
+    width: 240px;
+    height: 240px;
+    margin: 10px auto;
+    animation: santai 3s ease-in-out infinite;
+}
+
+@keyframes santai {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6px) scale(1.02); }
+}
+
+.clickable-head, .clickable-belly {
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.clickable-head:hover {
+    filter: brightness(1.1);
+}
+.clickable-belly:hover {
+    filter: brightness(1.05);
+}
+
+.eyes-normal, .eyes-happy, .mouth-normal, .mouth-smile {
+    transition: opacity 0.25s ease-in-out;
+}
+
+.eyes-happy, .mouth-smile {
+    opacity: 0;
+}
+
+.cake-hand-wrap {
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: 40px 140px;
+}
+
+.bear-boss.action-triggered .eyes-normal { opacity: 0; }
+.bear-boss.action-triggered .eyes-happy { opacity: 1; }
+.bear-boss.action-triggered .mouth-normal { opacity: 0; }
+.bear-boss.action-triggered .mouth-smile { opacity: 1; }
+.bear-boss.action-triggered .cake-hand-wrap {
+    transform: translate(25px, -12px) scale(1.18);
+}
+
+.photo-rain {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border: 4px solid white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+    pointer-events: none;
+    animation: terjun 3.5s linear forwards;
+}
+
+@keyframes terjun {
+    0% { transform: translateY(-120px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.foto-polaroid {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 8px solid #fff;
+    border-bottom: 30px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: rotate(-3deg);
+    margin: 15px auto;
+}
+
+button {
+    background: linear-gradient(135deg, #ff6b81, #ff4757);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-family: 'Fredoka One', cursive;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(255, 71, 87, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 71, 87, 0.5);
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: 1;
+    animation: jatuh linear infinite;
+}
+
+@keyframes jatuh {
+    0% { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(105vh) rotate(360deg); }
+}
